@@ -1,0 +1,30 @@
+/**
+ * This file contains the main function that convert a datetime object in the given table to the desired datetime format
+ */
+function convertDateTimeFormat()
+{
+  // initialize a regular expression to match ' ' or 'Updating'
+  var regex = /^\d{2}\/\d{2}\/\d{2}$/;
+  
+  for (var i = 0; i < packagingCode.length; ++i)
+  {
+    var validDateMBO = packagingCode[i][validDateMBOIndex - 1];
+    
+    if (regex.test(validDateMBO)) {
+      var splittedvalidDateMBO = validDateMBO.split('/');
+
+      // extract a year, a month and a day object of a given date
+      var year = '20' + splittedvalidDateMBO[2];
+      var month = splittedvalidDateMBO[1];
+      var day = splittedvalidDateMBO[0];
+
+      // convert a datetime object to the desired datetime format 
+      var formattedvalidDateMBO = Utilities.formatDate(new Date(year, month - 1, day), 'GMT+7', 'yyyy-MM-dd');
+
+      packagingCodeSheet.getRange(i + 2, validDateMBOIndex).setValue(formattedvalidDateMBO);
+    } else {
+      // import the unconveted datetime object into the destionation sheet if it contains ' ' or 'Updating'
+      packagingCodeSheet.getRange(i + 2, validDateMBOIndex).setValue(validDateMBO);
+    }
+  }
+}
