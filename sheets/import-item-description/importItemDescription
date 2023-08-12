@@ -1,0 +1,32 @@
+/**
+ * This file contains the main function that import item codes and item descriptions from the latest modified file in the
+ * 'MATERIAL_PACKAGING_MASTTER_DATA' folder to the destination file
+ */
+
+/**
+ * Imports item codes and item descriptions from the latest modified file in the
+ * 'MATERIAL_PACKAGING_MASTTER_DATA' folder to the destination file
+ */
+function importItemDescription()
+{
+  // get the latest modified file id by utilizing a getLatestModifiedFileId function
+  var latestModifiedFileId = getLatestModifiedFileId();
+
+  // get the latest modified file by file id
+  var latestModifiedFile = SpreadsheetApp.openById(latestModifiedFileId);
+
+  // get 'Sheet 1' sheet
+  var sheet = latestModifiedFile.getSheetByName('Sheet 1');
+
+  // get item code information from 'Sheet 1' sheet
+  var itemCode = sheet.getRange(2, itemCodeIndex, sheet.getLastRow() - 1, 1).getValues();
+
+  // get item description information from 'Sheet 1' sheet
+  var itemDecription = sheet.getRange(2, itemDecriptionIndex, sheet.getLastRow() -1, 1).getValues();
+
+  // input item code information from 'Sheet 1' sheet into 'item_description' sheet
+  itemDescriptionSheet.getRange(2, itemCodeIndex, itemCode.length, 1).setValues(itemCode);
+
+  // input item description information from 'Sheet 1' sheet into 'item_description' sheet
+  itemDescriptionSheet.getRange(2, itemDecriptionIndex, itemDecription.length, 1).setValues(itemDecription);
+}
