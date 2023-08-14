@@ -7,7 +7,7 @@
  * 
  * @param {object} value - data of a given file.
  * @param {string} text - a text string contains the name of a table column in which to find.
- * @return {object} the index object of the column.
+ * @returns {object} the index object of the column.
  */
 function findIndex(value, text)
 {
@@ -23,7 +23,7 @@ function findIndex(value, text)
 /**
  * Gets the previous date of the current date.
  * 
- * @return {object} the previous date
+ * @returns {object} the previous date
  */
 function getPreviousDate()
 {
@@ -39,7 +39,7 @@ function getPreviousDate()
 /**
  * Gets the ID of the latest modified file in the 'MATERIAL_PACKAGING_MASTTER_DATA' folder.
  * 
- * @return {object} the ID of the latest modified file.
+ * @returns {object} the ID of the latest modified file.
  */
 function getLatestModifiedFileId()
 {
