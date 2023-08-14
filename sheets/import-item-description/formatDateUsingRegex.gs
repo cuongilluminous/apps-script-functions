@@ -1,5 +1,5 @@
 /**
- * This file contains the main function that convert a datetime object in the given table to the desired datetime format
+ * This file contains the main function that formats a given date in the the format year-month-date
  */
 function formatDateUsingRegex()
 {
